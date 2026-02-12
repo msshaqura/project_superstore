@@ -1,0 +1,25 @@
+# Virtual environment
+venv/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Secrets / credentials
+key.json
+*.json
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
