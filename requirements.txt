@@ -1,5 +1,7 @@
-pandas-gbq package version 0.26.1
+pandas-gbq==0.26.1
 pandas
 sqlalchemy
 psycopg2-binary
 python-dotenv
+chardet
+kagglehub

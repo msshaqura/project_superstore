@@ -1,23 +1,32 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path().resolve().parents[1]))
-
-
+from db import wait_for_db, engine
 from data_loader import get_clean_data
-from src.db import engine
+from load_to_db import load_dim_tables, load_fact_tables
+import pandas as pd
 
-# 1️⃣ Charger et nettoyer les données
+print("💻 Initialisation...")
+
+# 1️⃣ Attendre DB
+wait_for_db()
+
+# 2️⃣ Charger et nettoyer les données
 df_clean = get_clean_data()
 
-# 2️⃣ Connexion à RDS
-engine = get_engine()
+# 3️⃣ Créer dim_date
+dates = pd.date_range(start=df_clean['order_date'].min(), end=df_clean['order_date'].max())
+df_dim_date = pd.DataFrame({
+    'date_id': dates,
+    'year': dates.year,
+    'quarter': dates.quarter,
+    'month': dates.month,
+    'month_name': dates.strftime('%B'),
+    'week': dates.isocalendar().week,
+    'day': dates.day,
+    'day_name': dates.strftime('%A'),
+    'is_weekend': dates.weekday >= 5
+})
 
-# 3️⃣ Envoyer les données vers la base RDS
-df_clean.to_sql("cleaned_data", engine, if_exists="replace", index=False)
-print("Data uploaded to RDS successfully!")
+# 4️⃣ Charger les tables
+load_dim_tables(df_clean, df_dim_date)
+load_fact_tables(df_clean)
 
-# 4️⃣  Vérification   
-import pandas as pd
-df_check = pd.read_sql("SELECT * FROM cleaned_data LIMIT 5", engine)
-print(df_check)
+print("✅ Tout est prêt !")

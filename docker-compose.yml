@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    container_name: superstore_db
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env.docker  
+ 
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      retries: 10
+
+  app:
+    build: .
+    container_name: superstore_app
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env.docker  # à remplacer par .env pour connecter à RDS
+
+    environment:
+      RUNNING_IN_DOCKER: "true" # à désactiver pour connecter à RDS
+      ENV: dev   # à remplacer par prod pour connecter à RDS
+      
+    command: python src/main.py
