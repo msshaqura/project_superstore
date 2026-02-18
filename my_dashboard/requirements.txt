@@ -1,18 +1,13 @@
-# Bibliothèques principales pour Streamlit et visualisation
 streamlit==1.28.0
-pandas==2.2.3              # Version compatible avec Python 3.14
-numpy==2.2.0               # Dernière version stable
+pandas==2.2.3
+numpy==1.26.4              # Version < 2.0 compatible avec streamlit
 plotly==5.24.0
-matplotlib==3.9.0
+matplotlib==3.8.4          # Version plus stable
 seaborn==0.13.2
 scikit-learn==1.5.0
-
-# Bibliothèques pour base de données
 pandas-gbq==0.23.0
 sqlalchemy==2.0.35
 psycopg2-binary==2.9.9
 python-dotenv==1.0.0
-
-# Utilitaires
 chardet==5.2.0
 kagglehub==0.2.6
