@@ -1,7 +1,18 @@
-pandas-gbq==0.26.1
-pandas
-sqlalchemy
-psycopg2-binary
-python-dotenv
-chardet
-kagglehub
+# Bibliothèques principales pour Streamlit et visualisation
+streamlit==1.28.0
+pandas==2.2.3              # Version compatible avec Python 3.14
+numpy==2.2.0               # Dernière version stable
+plotly==5.24.0
+matplotlib==3.9.0
+seaborn==0.13.2
+scikit-learn==1.5.0
+
+# Bibliothèques pour base de données
+pandas-gbq==0.23.0
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+python-dotenv==1.0.0
+
+# Utilitaires
+chardet==5.2.0
+kagglehub==0.2.6
