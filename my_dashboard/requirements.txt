@@ -1,8 +1,8 @@
 streamlit==1.28.0
 pandas==2.2.3
-numpy==1.26.4              # Version < 2.0 compatible avec streamlit
+numpy==1.26.4
 plotly==5.24.0
-matplotlib==3.8.4          # Version plus stable
+matplotlib==3.8.4
 seaborn==0.13.2
 scikit-learn==1.5.0
 pandas-gbq==0.23.0
