@@ -781,7 +781,7 @@ df_filtered = df[
 # ============================================
 # MAIN CONTENT
 # ============================================
-st.markdown('<h1 class="main-header">📊 Superstore Analytics Dashboard</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header" style="color:black;">📊 Superstore Analytics Dashboard</h1>', unsafe_allow_html=True)
 
 # ============================================
 # PAGE D'ACCUEIL (INTRODUCTION)
@@ -1375,8 +1375,8 @@ with tab5:
     st.plotly_chart(fig_3d, use_container_width=True)
 
 
-    # Profil détaillé des clusters
-    st.markdown('<h3 class="subsection-header">📋 Profil détaillé des clusters</h3>', unsafe_allow_html=True)
+    # Profils des centroïdes
+    st.markdown('<h3 class="subsection-header">📋 Profils des centroïdes</h3>', unsafe_allow_html=True)
     
     styled_profile = cluster_profile.style.format({
         'total_profit': '${:,.0f}',
@@ -1671,7 +1671,7 @@ with tab7:
 # FOOTER
 # ============================================
 st.markdown("""
-<div class="footer">
+<div class="footer" style="color:white;">
     <p>📊 Superstore Advanced Analytics Dashboard | Version enrichie avec segmentation avancée</p>
     <p style="font-size: 0.9rem; opacity: 0.7;">
         Données : Sample Superstore | 
